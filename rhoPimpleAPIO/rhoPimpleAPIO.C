@@ -174,7 +174,7 @@ int main(int argc, char *argv[])
             }
 	    Iwait({&f_U,&f_U_0});
             #include "UEqn.H"
-	    Iwait({&f_T});            
+	    Iwait({&f_T});      
 	    #include "EEqn.H"
 	    if (runTime.outputTime())
                 {
@@ -192,14 +192,11 @@ int main(int argc, char *argv[])
                 {
                     #include "pEqn.H"
                 }
+                pEqnloop++;
             }
-	    if (runTime.outputTime())
-                {
-                        Iwrite({&f_U,&f_U_0,&f_phi,&f_phi_0,&f_p,&f_p_0},cv_worker,queue);
-
-                }
-	    Iwait({&f_k,&f_k_0,&f_alphat,&f_nut});
-
+            pEqnloop=0;
+	    
+            Iwait({&f_k,&f_k_0,&f_alphat,&f_nut});
             if (pimple.turbCorr())
             {
                 turbulence->correct();

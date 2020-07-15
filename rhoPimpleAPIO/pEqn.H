@@ -61,7 +61,13 @@ if (pimple.transonic())
             phi = phiHbyA + pEqn.flux();
         }
     }
-
+// WRITE FLUX FIELD (PHI)
+//---------------------------------------------------
+    if (runTime.outputTime() && pEqnloop==1)
+        {
+          Iwrite({&f_phi,&f_phi_0},cv_worker,queue);
+        }
+//---------------------------------------------------
 }
 else
 {
@@ -93,8 +99,18 @@ p.relax();
 
 U = HbyA - rAU*fvc::grad(p);
 U.correctBoundaryConditions();
-fvOptions.correct(U);
 
+
+Info << "pEqnloop: "<< pEqnloop << endl; 
+// WRITE VELOCITY FIELD
+//-----------------------------------------------
+if (runTime.outputTime() && pEqnloop==1)
+        {
+          Info << "WRITING U FIELD" << endl;
+          Iwrite({&f_U,&f_U_0},cv_worker,queue);
+        }
+//-----------------------------------------------
+fvOptions.correct(U);
 K = 0.5*magSqr(U);
 
 if (pressureControl.limit(p))
@@ -102,6 +118,13 @@ if (pressureControl.limit(p))
     p.correctBoundaryConditions();
 }
 
+// WRITE PRESSURE FIELD
+//------------------------------------------------
+if (runTime.outputTime() && pEqnloop==1)
+        {
+          Iwrite({&f_p,&f_p_0},cv_worker,queue);
+        }
+//------------------------------------------------
 thermo.correctRho(psi*p - psip0, rhoMin, rhoMax) ;
 
 #include "rhoEqn.H"
@@ -121,3 +144,6 @@ if (thermo.dpdt())
         dpdt -= fvc::div(fvc::meshPhi(rho, U), p);
     }
 }
+
+
+

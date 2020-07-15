@@ -1,6 +1,7 @@
 #ifndef APIO_H
 #define APIO_H
 
+#include <iostream>
 #include <queue>
 #include <string>
 #include <condition_variable>
@@ -23,8 +24,9 @@ struct field_handler
 
 
 
-void writeFromQueue(std::atomic<bool>& running,std::queue<field_handler*>& queue,std::condition_variable& cv_worker, objectRegistry& mesh)
+void writeFromQueue(int rank, std::atomic<bool>& running,std::queue<field_handler*>& queue,std::condition_variable& cv_worker, objectRegistry& mesh)
 {
+
     while(running)
     {
         if(!queue.empty())
