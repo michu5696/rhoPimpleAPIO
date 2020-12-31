@@ -1,0 +1,980 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : rhoPimpleIOTIMES -parallel
+Date   : Nov 18 2020
+Time   : 16:50:27
+Host   : s24r2b69
+PID    : 262234
+I/O    : uncollated
+Case   : /gpfs/scratch/pr1ejg00/pr1ejg20/openfoam/apio_32M/48_IOTIMES
+nProcs : 48
+Hosts  :
+(
+    (s24r2b69 48)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+--> FOAM Warning : 
+    From function Foam::pressureControl::pressureControl(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> &, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> &, const Foam::dictionary &, bool)
+    in file cfdTools/general/pressureControl/pressureControl.C at line 123
+    Reading "/gpfs/scratch/pr1ejg00/pr1ejg20/openfoam/apio_32M/48_IOTIMES/system/fvSolution.PIMPLE"
+    'rhoMax' specified rather than 'pMax' or 'pMaxFactor'
+    This is supported for backward-compatibility but 'pMax' or 'pMaxFactor' are more reliable.
+--> FOAM Warning : 
+    From function Foam::pressureControl::pressureControl(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> &, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> &, const Foam::dictionary &, bool)
+    in file cfdTools/general/pressureControl/pressureControl.C at line 178
+    Reading "/gpfs/scratch/pr1ejg00/pr1ejg20/openfoam/apio_32M/48_IOTIMES/system/fvSolution.PIMPLE"
+    'rhoMin' specified rather than 'pMin' or 'pMinFactor'
+    This is supported for backward-compatibility but 'pMin' or 'pMinFactor' are more reliable.
+pressureControl
+    pMax 1726187.557059955
+    pMin 4747.015781914877
+
+Creating turbulence model
+
+Selecting turbulence model type LES
+Selecting LES turbulence model kEqn
+Selecting LES delta type cubeRootVol
+LES
+{
+    LESModel        kEqn;
+    turbulence      on;
+    printCoeffs     on;
+    delta           cubeRootVol;
+    cubeRootVolCoeffs
+    {
+        deltaCoeff      1;
+    }
+    PrandtlCoeffs
+    {
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+        smoothCoeffs
+        {
+            delta           cubeRootVol;
+            cubeRootVolCoeffs
+            {
+                deltaCoeff      1;
+            }
+            maxDeltaRatio   1.1;
+        }
+        Cdelta          0.158;
+    }
+    vanDriestCoeffs
+    {
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+        smoothCoeffs
+        {
+            delta           cubeRootVol;
+            cubeRootVolCoeffs
+            {
+                deltaCoeff      1;
+            }
+            maxDeltaRatio   1.1;
+        }
+        Aplus           26;
+        Cdelta          0.158;
+    }
+    smoothCoeffs
+    {
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+        maxDeltaRatio   1.1;
+    }
+    Ce              1.048;
+    Ck              0.094;
+}
+
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+No finite volume options present
+APIO_procNo = 0
+APIO_masterNo = 0
+writeThread 0 on CPU 48
+APIO_procNo = 2
+APIO_procNo = 32
+APIO_procNo = 4
+APIO_procNo = 40
+APIO_procNo = 1
+APIO_procNo = 42
+APIO_procNo = 5
+APIO_procNo = 43
+APIO_procNo = 8
+APIO_procNo = 41
+APIO_procNo = 10
+APIO_procNo = 33
+APIO_procNo = 36
+APIO_procNo = 11
+APIO_procNo = 16
+APIO_procNo = 44
+APIO_procNo = 12
+APIO_procNo = 17
+APIO_procNo = 18
+APIO_procNo = 14
+APIO_procNo = 15
+APIO_procNo = 3
+APIO_procNo = 24
+APIO_procNo = 20
+APIO_procNo = 45
+APIO_procNo = 38
+APIO_procNo = 19
+APIO_procNo = 37
+APIO_procNo = 6
+APIO_procNo = 46
+APIO_procNo = 34
+APIO_procNo = 26
+APIO_procNo = 7
+APIO_procNo = 28
+APIO_procNo = 35
+APIO_procNo = 25
+APIO_procNo = 39
+APIO_procNo = 27
+APIO_procNo = 13
+APIO_procNo = 21
+APIO_procNo = 47
+APIO_procNo = 22
+APIO_procNo = 29
+APIO_procNo = 9
+APIO_procNo = 23
+APIO_procNo = 30
+APIO_procNo = 31
+Courant Number mean: 4.134521852232651e-11 max: 1.042519685039371e-05
+
+Starting time loop
+
+BEGIN ITERATION TIME = 1605714635.923697
+writeThread 27 on CPU 0
+writeThread 14 on CPU 0
+writeThread 35 on CPU 0
+writeThread 44 on CPU 0
+writeThread 26 on CPU 0
+writeThread 39 on CPU 0
+writeThread 38 on CPU 0
+writeThread 31 on CPU 0
+writeThread 3 on CPU 0
+writeThread 12 on CPU 0
+writeThread 21 on CPU 0
+writeThread 24 on CPU 0
+writeThread 7 on CPU 0
+writeThread 8 on CPU 0
+writeThread 18 on CPU 0
+writeThread 6 on CPU 0
+writeThread 34 on CPU 0
+writeThread 13 on CPU 0
+writeThread 22 on CPU 0
+writeThread 43 on CPU 0
+writeThread 9 on CPU 0
+writeThread 29 on CPU 0
+writeThread 30 on CPU 0
+writeThread 41 on CPU 0
+writeThread 16 on CPU 0
+writeThread 20 on CPU 0
+writeThread 45 on CPU 0
+writeThread 37 on CPU 0
+writeThread 1 on CPU 0
+writeThread 25 on CPU 0
+writeThread 46 on CPU 0
+writeThread 5 on CPU 0
+writeThread 32 on CPU 0
+writeThread 36 on CPU 0
+writeThread 2 on CPU 0
+writeThread 4 on CPU 0
+writeThread 42 on CPU 0
+writeThread 10 on CPU 0
+writeThread 33 on CPU 0
+writeThread 11 on CPU 0
+writeThread 17 on CPU 0
+writeThread 19 on CPU 0
+writeThread 23 on CPU 0
+writeThread 28 on CPU 0
+writeThread 40 on CPU 0
+writeThread 15 on CPU 0
+writeThread 47 on CPU 0
+Courant Number mean: 4.134521852232651e-11 max: 1.042519685039371e-05
+deltaT = 1.2e-09
+Time = 1.2e-09
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 1, Final residual = 2.002681442061028e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 1, Final residual = 3.337724948956399e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 1, Final residual = 3.67149014138468e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.9999999987407729, Final residual = 1.476285052270801e-20, No Iterations 2
+T_io = 0.2424600124359131
+DILUPBiCG:  Solving for p, Initial residual = 0.9999991514882776, Final residual = 2.465818788351908e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.553785999461402e-16, global = 3.553730679145525e-16, cumulative = 3.553730679145525e-16
+DILUPBiCG:  Solving for p, Initial residual = 1.144881182779609e-07, Final residual = 5.494712723687517e-17, No Iterations 1
+phi_io = 0.008249998092651367
+phi_0_io = 0.06953215599060059
+pEqnloop: 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+U_io = 1.437526941299438
+U_0_io = 0.004079103469848633
+p_io = 0.001460075378417969
+p_0_io = 0.0007610321044921875
+time step continuity errors : sum local = 3.049548352485447e-16, global = 3.040831183388709e-16, cumulative = 6.594561862534234e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.9999999969933518, Final residual = 3.671600387127004e-21, No Iterations 2
+k_io = 0.002451896667480469
+k_0_io = 0.0006120204925537109
+alphat_io = 0.0008368492126464844
+nut_io = 0.0007350444793701172
+ExecutionTime = 1.43 s  ClockTime = 70 s
+
+END ITERATION TIME = 1605714697.504198
+rho_io = 0.002084016799926758
+BEGIN ITERATION TIME = 1605714697.541835
+rho_0_io = 0.0471949577331543
+Courant Number mean: 4.961438652000383e-11 max: 1.251009538926646e-05
+deltaT = 1.44e-09
+Time = 2.64e-09
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.3748998142753897, Final residual = 4.558663655382061e-22, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.3748998142119857, Final residual = 7.582056105832603e-22, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.2307657613389893, Final residual = 5.154578120873181e-22, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.2307604967773839, Final residual = 2.067214487156708e-21, No Iterations 2
+T_io = 0.003776073455810547
+DILUPBiCG:  Solving for p, Initial residual = 0.2307643588648433, Final residual = 3.430968484307892e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.59107416818432e-16, global = 1.260747185796171e-16, cumulative = 7.855309048330405e-16
+DILUPBiCG:  Solving for p, Initial residual = 9.054364449198628e-08, Final residual = 5.72283961174998e-16, No Iterations 1
+phi_io = 0.02202796936035156
+phi_0_io = 0.01483583450317383
+pEqnloop: 1
+U_io = 0.006286859512329102
+U_0_io = 0.125352144241333
+p_io = 0.001127958297729492
+p_0_io = 0.004712104797363281
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.265152651967734e-16, global = 9.130594693648663e-17, cumulative = 8.768368517695272e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.6960455081138318, Final residual = 1.556001652891421e-21, No Iterations 2
+k_io = 0.003007888793945312
+k_0_io = 0.001311779022216797
+alphat_io = 0.0008449554443359375
+nut_io = 0.000885009765625
+ExecutionTime = 3.19 s  ClockTime = 151 s
+
+END ITERATION TIME = 1605714778.113625
+rho_io = 0.0009791851043701172
+BEGIN ITERATION TIME = 1605714778.114993
+rho_0_io = 0.1333930492401123
+Courant Number mean: 5.953744325482773e-11 max: 1.501191174373759e-05
+deltaT = 1.728e-09
+Time = 4.368e-09
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.323098999630029, Final residual = 5.753440393327172e-22, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.3230989979217402, Final residual = 9.522312792948136e-22, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1406204733855008, Final residual = 4.621047651737794e-22, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.1406159844917805, Final residual = 1.841858966393672e-21, No Iterations 2
+T_io = 0.003039121627807617
+DILUPBiCG:  Solving for p, Initial residual = 0.1406195887926888, Final residual = 3.010919890276444e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.599088682835549e-16, global = 4.545039796605396e-16, cumulative = 1.331340831430067e-15
+DILUPBiCG:  Solving for p, Initial residual = 5.20947382393171e-08, Final residual = 7.692475483722121e-16, No Iterations 1
+phi_io = 0.003418922424316406
+phi_0_io = 0.001603841781616211
+pEqnloop: 1
+U_io = 0.005066871643066406
+U_0_io = 0.005541086196899414
+p_io = 0.001003026962280273
+p_0_io = 0.001146793365478516
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.478129874569155e-16, global = 4.468547270702798e-16, cumulative = 1.778195558500347e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.4777461072120744, Final residual = 1.572807949240445e-21, No Iterations 2
+k_io = 0.003391027450561523
+k_0_io = 0.001100063323974609
+alphat_io = 0.001134872436523438
+nut_io = 0.0009300708770751953
+ExecutionTime = 4.55 s  ClockTime = 224 s
+
+END ITERATION TIME = 1605714851.515463
+rho_io = 0.001143932342529297
+BEGIN ITERATION TIME = 1605714851.517838
+rho_0_io = 0.002393960952758789
+Courant Number mean: 7.144519100114715e-11 max: 1.801400228211915e-05
+deltaT = 2.0736e-09
+Time = 6.4416e-09
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.2861786292105454, Final residual = 7.548523112684863e-22, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2861786279250068, Final residual = 1.239160481892236e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1060847875738669, Final residual = 5.202702191725769e-22, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.1060800472313214, Final residual = 2.052844927486595e-21, No Iterations 2
+T_io = 0.004862070083618164
+DILUPBiCG:  Solving for p, Initial residual = 0.1060835150831364, Final residual = 3.271384109983838e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.601991960189145e-16, global = -1.120084499569327e-16, cumulative = 1.666187108543414e-15
+DILUPBiCG:  Solving for p, Initial residual = 2.620399414114385e-08, Final residual = 2.624823634155516e-15, No Iterations 1
+phi_io = 0.009878873825073242
+phi_0_io = 0.002274990081787109
+pEqnloop: 1
+U_io = 0.00767207145690918
+U_0_io = 0.2242288589477539
+p_io = 0.001116037368774414
+p_0_io = 0.001632213592529297
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.659159880828566e-16, global = -1.312643736281396e-16, cumulative = 1.534922734915274e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.3500191126218611, Final residual = 1.722680595991216e-21, No Iterations 2
+k_io = 0.001080036163330078
+k_0_io = 0.0009570121765136719
+alphat_io = 0.0007929801940917969
+nut_io = 0.0007429122924804688
+ExecutionTime = 6.86 s  ClockTime = 308 s
+
+END ITERATION TIME = 1605714935.256137
+rho_io = 0.001556158065795898
+BEGIN ITERATION TIME = 1605714935.25941
+rho_0_io = 0.01157402992248535
+Courant Number mean: 8.573460376546508e-11 max: 2.161638276602909e-05
+deltaT = 2.48832e-09
+Time = 8.92992e-09
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.2580203274912876, Final residual = 1.020457141617592e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2580203266947301, Final residual = 1.656009992293223e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.08806061632318375, Final residual = 6.541735424849684e-22, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.08805515542308032, Final residual = 2.54551118264061e-21, No Iterations 2
+T_io = 0.01487493515014648
+DILUPBiCG:  Solving for p, Initial residual = 0.08805904319045381, Final residual = 3.911216802795835e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.948998586310849e-16, global = -4.945601543865166e-16, cumulative = 1.040362580528758e-15
+DILUPBiCG:  Solving for p, Initial residual = 2.118063917917909e-08, Final residual = 3.914521903863419e-15, No Iterations 1
+phi_io = 0.002393960952758789
+phi_0_io = 0.001860857009887695
+pEqnloop: 1
+U_io = 0.004806995391845703
+U_0_io = 0.005678892135620117
+p_io = 0.001111030578613281
+p_0_io = 0.001072168350219727
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.175983936821633e-16, global = -5.175976435761857e-16, cumulative = 5.227649369525721e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.2753458403987187, Final residual = 2.058378677437371e-21, No Iterations 2
+k_io = 0.002897977828979492
+k_0_io = 0.001147985458374023
+alphat_io = 0.0008778572082519531
+nut_io = 0.001384973526000977
+ExecutionTime = 8.359999999999999 s  ClockTime = 393 s
+
+END ITERATION TIME = 1605715020.228654
+rho_io = 0.0008831024169921875
+rho_0_io = 0.003975152969360352
+BEGIN ITERATION TIME = 1605715020.26967
+Courant Number mean: 1.028820665862334e-10 max: 2.593905497807935e-05
+deltaT = 2.985983999999999e-09
+Time = 1.19159e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.236917445524324, Final residual = 1.423435737983944e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.236917445059656, Final residual = 2.275830133891994e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.07713770423081717, Final residual = 8.815365746168726e-22, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.07713127472432932, Final residual = 3.370612425382274e-21, No Iterations 2
+T_io = 0.01088404655456543
+DILUPBiCG:  Solving for p, Initial residual = 0.0771359207431507, Final residual = 4.934864258417072e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.161314206707835e-16, global = -5.154499493903776e-16, cumulative = 7.314987562194488e-18
+DILUPBiCG:  Solving for p, Initial residual = 1.556252139737655e-08, Final residual = 1.306214464953614e-14, No Iterations 1
+phi_io = 0.009892940521240234
+phi_0_io = 0.002358913421630859
+pEqnloop: 1
+U_io = 0.008872032165527344
+U_0_io = 1.06598687171936
+p_io = 0.0009789466857910156
+p_0_io = 0.0007519721984863281
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.33817466286068e-16, global = -5.337856805452786e-16, cumulative = -5.264706929830841e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.2286511800956952, Final residual = 2.640596525148402e-21, No Iterations 2
+k_io = 0.000949859619140625
+k_0_io = 0.0009310245513916016
+alphat_io = 0.001131057739257812
+nut_io = 0.0007109642028808594
+ExecutionTime = 9.66 s  ClockTime = 465 s
+
+END ITERATION TIME = 1605715092.117145
+rho_io = 0.001145124435424805
+rho_0_io = 0.0009939670562744141
+BEGIN ITERATION TIME = 1605715092.191422
+Courant Number mean: 1.234592653244742e-10 max: 3.112599647639451e-05
+deltaT = 3.583180799999999e-09
+Time = 1.54991e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.2210719251155104, Final residual = 2.046703122965477e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.22107192480959, Final residual = 3.213029202155578e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.0699101888343623, Final residual = 1.249210868958187e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.06990251884597959, Final residual = 4.677940590396291e-21, No Iterations 2
+T_io = 0.004475831985473633
+DILUPBiCG:  Solving for p, Initial residual = 0.06990808781704504, Final residual = 6.44255544188856e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.077228633029773e-16, global = -1.953728372061387e-16, cumulative = -7.218435301892228e-16
+DILUPBiCG:  Solving for p, Initial residual = 1.041843961589761e-08, Final residual = 3.197265270010344e-14, No Iterations 1
+phi_io = 0.004942893981933594
+phi_0_io = 0.001681089401245117
+pEqnloop: 1
+U_io = 0.005522012710571289
+U_0_io = 0.005060195922851562
+p_io = 0.1001849174499512
+p_0_io = 0.001041889190673828
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.993206449636544e-16, global = -1.855668892939046e-16, cumulative = -9.074104194831273e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.197564435676624, Final residual = 3.589368525876514e-21, No Iterations 2
+k_io = 0.001182794570922852
+k_0_io = 0.001368999481201172
+alphat_io = 0.0009200572967529297
+nut_io = 0.0008339881896972656
+ExecutionTime = 11 s  ClockTime = 536 s
+
+END ITERATION TIME = 1605715163.475209
+rho_io = 0.001002788543701172
+rho_0_io = 0.001068115234375
+BEGIN ITERATION TIME = 1605715163.507852
+Courant Number mean: 1.481522578782154e-10 max: 3.734994500373929e-05
+deltaT = 4.299816959999999e-09
+Time = 1.97989e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.2090424908485897, Final residual = 3.028830996464317e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2090424906625455, Final residual = 4.653154416390583e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.06484578854922117, Final residual = 1.842960722465615e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.06483663608516582, Final residual = 6.739733619087095e-21, No Iterations 2
+T_io = 0.007574081420898438
+DILUPBiCG:  Solving for p, Initial residual = 0.06484328904711312, Final residual = 8.608821484919538e-11, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.92735605166972e-16, global = -1.733772451696399e-16, cumulative = -1.080787664652767e-15
+DILUPBiCG:  Solving for p, Initial residual = 9.148058454223321e-09, Final residual = 1.227295552609716e-14, No Iterations 1
+phi_io = 0.004626035690307617
+phi_0_io = 0.001513004302978516
+pEqnloop: 1
+U_io = 0.00621795654296875
+U_0_io = 0.005947113037109375
+p_io = 0.001016139984130859
+p_0_io = 0.00339508056640625
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.06095039496158e-16, global = -1.960090207683069e-16, cumulative = -1.276796685421074e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.175814137368334, Final residual = 5.124634351448543e-21, No Iterations 2
+k_io = 0.001059055328369141
+k_0_io = 0.001188993453979492
+alphat_io = 0.0008671283721923828
+nut_io = 0.0008940696716308594
+ExecutionTime = 12.48 s  ClockTime = 615 s
+
+END ITERATION TIME = 1605715242.643633
+rho_io = 0.001165866851806641
+rho_0_io = 0.001543998718261719
+BEGIN ITERATION TIME = 1605715242.671787
+Courant Number mean: 1.777843652403962e-10 max: 4.481813520089824e-05
+deltaT = 5.159780351999998e-09
+Time = 2.49587e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1997885780580373, Final residual = 4.607306206630839e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1997885779172872, Final residual = 6.905132302226e-21, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.06115283157967528, Final residual = 2.814087069246243e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.06114190953012114, Final residual = 1.002778719671385e-20, No Iterations 2
+T_io = 0.00351715087890625
+DILUPBiCG:  Solving for p, Initial residual = 0.06114986464741724, Final residual = 1.169672488066563e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.647694508436851e-16, global = -1.22372992234422e-16, cumulative = -1.399169677655496e-15
+DILUPBiCG:  Solving for p, Initial residual = 7.101809516707262e-09, Final residual = 9.819631032258988e-15, No Iterations 1
+phi_io = 0.001637935638427734
+phi_0_io = 0.004166841506958008
+pEqnloop: 1
+U_io = 0.005333900451660156
+U_0_io = 0.00593113899230957
+p_io = 0.001224994659423828
+p_0_io = 0.0009801387786865234
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.645071012784102e-16, global = -1.440592123584422e-16, cumulative = -1.543228890013938e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.1599977546893658, Final residual = 7.641698951872333e-21, No Iterations 2
+k_io = 0.001062870025634766
+k_0_io = 0.001202821731567383
+alphat_io = 0.000988006591796875
+nut_io = 0.0009810924530029297
+ExecutionTime = 14.12 s  ClockTime = 701 s
+
+END ITERATION TIME = 1605715328.99458
+rho_io = 0.001005172729492188
+rho_0_io = 0.003334999084472656
+BEGIN ITERATION TIME = 1605715329.060882
+Courant Number mean: 2.133436485729229e-10 max: 5.377917595588211e-05
+deltaT = 6.191736422399998e-09
+Time = 3.11504e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1925787643206989, Final residual = 7.197405933785444e-21, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1925787642171584, Final residual = 1.049433525490686e-20, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05838079439771935, Final residual = 4.430818832352387e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05836763755928467, Final residual = 1.536408421644362e-20, No Iterations 2
+T_io = 0.002676963806152344
+DILUPBiCG:  Solving for p, Initial residual = 0.05837727307605235, Final residual = 1.608986068866383e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.712594677398794e-16, global = 3.696246117648926e-16, cumulative = -1.173604278249046e-15
+DILUPBiCG:  Solving for p, Initial residual = 5.982445516520167e-09, Final residual = 8.710795285527968e-15, No Iterations 1
+phi_io = 0.003204107284545898
+phi_0_io = 0.001787900924682617
+pEqnloop: 1
+U_io = 0.005406856536865234
+U_0_io = 0.005045175552368164
+p_io = 0.001076936721801758
+p_0_io = 0.001044034957885742
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.33744651963367e-16, global = 3.301905560851911e-16, cumulative = -8.434137221638544e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.1481446315312044, Final residual = 1.185827415175029e-20, No Iterations 2
+k_io = 0.002721786499023438
+k_0_io = 0.001039028167724609
+alphat_io = 0.0008168220520019531
+nut_io = 0.0008540153503417969
+ExecutionTime = 15.43 s  ClockTime = 768 s
+
+END ITERATION TIME = 1605715395.068691
+rho_io = 0.001142024993896484
+rho_0_io = 0.004825115203857422
+BEGIN ITERATION TIME = 1605715395.083313
+Courant Number mean: 2.560158942278372e-10 max: 6.453129383319028e-05
+deltaT = 7.430083706879997e-09
+Time = 3.85805e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1868977424175845, Final residual = 1.153879234993447e-20, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1868977423440149, Final residual = 1.6331954822386e-20, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05625427123173568, Final residual = 7.175300492227367e-21, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.0562385424946083, Final residual = 2.420476680841974e-20, No Iterations 2
+T_io = 0.007904052734375
+DILUPBiCG:  Solving for p, Initial residual = 0.05625005890205558, Final residual = 2.234240814856526e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.61539872474231e-16, global = 2.399868899486414e-16, cumulative = -6.03426832215213e-16
+DILUPBiCG:  Solving for p, Initial residual = 5.297281701345008e-09, Final residual = 8.826790609507919e-15, No Iterations 1
+phi_io = 0.003631830215454102
+phi_0_io = 0.003574132919311523
+pEqnloop: 1
+U_io = 0.005632162094116211
+U_0_io = 0.005493879318237305
+p_io = 0.001534223556518555
+p_0_io = 0.001575946807861328
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.147984250486047e-16, global = 1.894614391654556e-16, cumulative = -4.139653930497574e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.139047553627952, Final residual = 1.910342731130588e-20, No Iterations 2
+k_io = 0.002846002578735352
+k_0_io = 0.001192092895507812
+alphat_io = 0.0009629726409912109
+nut_io = 0.0008261203765869141
+ExecutionTime = 16.86 s  ClockTime = 842 s
+
+END ITERATION TIME = 1605715469.282131
+rho_io = 0.0009720325469970703
+rho_0_io = 0.04377007484436035
+BEGIN ITERATION TIME = 1605715469.331362
+Courant Number mean: 3.072242142500229e-10 max: 7.743221168149526e-05
+deltaT = 8.916100448255996e-09
+Time = 4.74966e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1823776200704966, Final residual = 1.897157888481932e-20, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1823776200150733, Final residual = 2.602837769133393e-20, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05459535196331513, Final residual = 1.192603568319738e-20, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05457654367256458, Final residual = 3.918150902343659e-20, No Iterations 2
+T_io = 0.00219416618347168
+DILUPBiCG:  Solving for p, Initial residual = 0.05459030719533298, Final residual = 3.125293618997437e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.599698535938414e-16, global = 2.433607258029262e-16, cumulative = -1.706046672468312e-16
+DILUPBiCG:  Solving for p, Initial residual = 4.32108569271743e-09, Final residual = 8.401567393429687e-15, No Iterations 1
+phi_io = 0.002342939376831055
+phi_0_io = 0.002101898193359375
+pEqnloop: 1
+U_io = 0.005463123321533203
+U_0_io = 0.005342960357666016
+p_io = 0.0009679794311523438
+p_0_io = 0.001049041748046875
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.275012351708338e-16, global = 2.112152155287049e-16, cumulative = 4.061054828187375e-17
+DILUPBiCG:  Solving for k, Initial residual = 0.1319313137360361, Final residual = 3.189465818938457e-20, No Iterations 2
+k_io = 0.001543045043945312
+k_0_io = 0.001821041107177734
+alphat_io = 0.0009589195251464844
+nut_io = 0.0007338523864746094
+ExecutionTime = 18.21 s  ClockTime = 913 s
+
+END ITERATION TIME = 1605715540.263894
+rho_io = 0.0009360313415527344
+rho_0_io = 0.001563072204589844
+BEGIN ITERATION TIME = 1605715540.311647
+Courant Number mean: 3.686765957848609e-10 max: 9.291098387932467e-05
+deltaT = 1.069932053790719e-08
+Time = 5.81959e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1787512734561917, Final residual = 3.19612663411383e-20, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1787512734272524, Final residual = 4.247995183308865e-20, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.0532839588224123, Final residual = 2.030592752680217e-20, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05326145608940346, Final residual = 6.515038327754217e-20, No Iterations 2
+T_io = 0.01905608177185059
+DILUPBiCG:  Solving for p, Initial residual = 0.05327790886881324, Final residual = 4.397174926125619e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.846070372133655e-16, global = -2.530798955802953e-16, cumulative = -2.124693472984215e-16
+DILUPBiCG:  Solving for p, Initial residual = 3.829985770394472e-09, Final residual = 8.885548989991664e-15, No Iterations 1
+phi_io = 0.003092050552368164
+phi_0_io = 0.002189159393310547
+pEqnloop: 1
+U_io = 0.005493879318237305
+U_0_io = 0.005506992340087891
+p_io = 0.001080989837646484
+p_0_io = 0.001035928726196289
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.462691677402855e-16, global = -2.420852641412485e-16, cumulative = -4.5455461143967e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.1262780099102612, Final residual = 5.511159413943187e-20, No Iterations 2
+k_io = 0.004146099090576172
+k_0_io = 0.001348972320556641
+alphat_io = 0.003305912017822266
+nut_io = 0.0007300376892089844
+ExecutionTime = 19.7 s  ClockTime = 991 s
+
+END ITERATION TIME = 1605715618.845115
+rho_io = 0.001574993133544922
+rho_0_io = 0.0023040771484375
+BEGIN ITERATION TIME = 1605715618.886441
+Courant Number mean: 4.424230046865336e-10 max: 0.0001114821715747901
+deltaT = 1.283918464548863e-08
+Time = 7.10351e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1758213261613379, Final residual = 5.510411756624293e-20, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1758213261441361, Final residual = 7.120653494464143e-20, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05223611232274576, Final residual = 3.53488363215859e-20, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05220917652905684, Final residual = 1.112630868209506e-19, No Iterations 2
+T_io = 0.00288701057434082
+DILUPBiCG:  Solving for p, Initial residual = 0.05222888126670349, Final residual = 6.215662574422481e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.616913903530085e-16, global = -4.943193678292457e-17, cumulative = -5.039865482225946e-16
+DILUPBiCG:  Solving for p, Initial residual = 2.84657483150969e-09, Final residual = 7.787220834904569e-15, No Iterations 1
+phi_io = 0.002010107040405273
+phi_0_io = 0.00183415412902832
+pEqnloop: 1
+U_io = 0.006000995635986328
+U_0_io = 0.006126880645751953
+p_io = 0.001016139984130859
+p_0_io = 0.002206087112426758
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.207943468649748e-16, global = -5.635902480486661e-17, cumulative = -5.603455730274612e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.1217298445240696, Final residual = 9.843126228831464e-20, No Iterations 2
+k_io = 0.001085042953491211
+k_0_io = 0.001662969589233398
+alphat_io = 0.0008540153503417969
+nut_io = 0.0007171630859375
+ExecutionTime = 21.34 s  ClockTime = 1076 s
+
+END ITERATION TIME = 1605715703.486936
+rho_io = 0.0008590221405029297
+rho_0_io = 0.001614093780517578
+BEGIN ITERATION TIME = 1605715703.566379
+Courant Number mean: 5.309239790032225e-10 max: 0.0001337628148340935
+deltaT = 1.540702157458636e-08
+Time = 8.64421e-08
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1734394890345807, Final residual = 9.785813740253061e-20, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1734394890243175, Final residual = 1.247185446329563e-19, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05139132800945617, Final residual = 6.278111687701687e-20, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.0513590764641528, Final residual = 1.951335973503001e-19, No Iterations 2
+T_io = 0.002074956893920898
+DILUPBiCG:  Solving for p, Initial residual = 0.05138268206723557, Final residual = 8.819857490858952e-10, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.321502533109936e-16, global = 3.219253712705321e-16, cumulative = -2.384202017569291e-16
+DILUPBiCG:  Solving for p, Initial residual = 2.895406688204711e-09, Final residual = 9.297291896370123e-15, No Iterations 1
+phi_io = 0.002244949340820312
+phi_0_io = 0.001624822616577148
+pEqnloop: 1
+U_io = 0.005220174789428711
+U_0_io = 0.00506281852722168
+p_io = 0.001044034957885742
+p_0_io = 0.002213954925537109
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.060885245134445e-16, global = 2.995582894415662e-16, cumulative = 6.113808768463713e-17
+DILUPBiCG:  Solving for k, Initial residual = 0.1180324497090722, Final residual = 1.814735027640094e-19, No Iterations 2
+k_io = 0.001081943511962891
+k_0_io = 0.001096010208129883
+alphat_io = 0.00090789794921875
+nut_io = 0.001183032989501953
+ExecutionTime = 22.92 s  ClockTime = 1159 s
+
+END ITERATION TIME = 1605715786.185036
+rho_io = 0.001330137252807617
+BEGIN ITERATION TIME = 1605715786.190698
+rho_0_io = 0.01100611686706543
+Courant Number mean: 6.371330497448814e-10 max: 0.0001604927456871203
+deltaT = 1.848842588950363e-08
+Time = 1.04931e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.171492629490204, Final residual = 1.848110053474273e-19, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1714926294798616, Final residual = 2.262319482008167e-19, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05070495616627799, Final residual = 1.134792483255091e-19, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05066632775276378, Final residual = 3.513715040992248e-19, No Iterations 2
+T_io = 0.002710103988647461
+DILUPBiCG:  Solving for p, Initial residual = 0.05069462491268994, Final residual = 1.255496553548186e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.456240781990701e-16, global = 3.423815576105054e-16, cumulative = 4.035196452951426e-16
+DILUPBiCG:  Solving for p, Initial residual = 2.688507784846426e-09, Final residual = 1.031166864053155e-14, No Iterations 1
+phi_io = 0.002076864242553711
+phi_0_io = 0.001536130905151367
+pEqnloop: 1
+U_io = 0.005640029907226562
+U_0_io = 0.004980802536010742
+p_io = 0.0007669925689697266
+p_0_io = 0.007231950759887695
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.729961457797217e-16, global = 2.702952954658736e-16, cumulative = 6.738149407610162e-16
+DILUPBiCG:  Solving for k, Initial residual = 0.1150004753506283, Final residual = 3.44866437382179e-19, No Iterations 2
+k_io = 0.001142024993896484
+k_0_io = 0.001659154891967773
+alphat_io = 0.001086950302124023
+nut_io = 0.0007920265197753906
+ExecutionTime = 24.57 s  ClockTime = 1241 s
+
+END ITERATION TIME = 1605715869.003657
+rho_io = 0.0008380413055419922
+rho_0_io = 0.001533985137939453
+BEGIN ITERATION TIME = 1605715869.039054
+Courant Number mean: 7.645958176262456e-10 max: 0.0001925588890697097
+deltaT = 2.218611106740435e-08
+Time = 1.27117e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1698932270772215, Final residual = 3.659740982290588e-19, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.169893227069516, Final residual = 4.272925240085884e-19, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.05014333638839621, Final residual = 2.08155911418572e-19, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.05009706535983217, Final residual = 6.493554950137296e-19, No Iterations 2
+T_io = 0.002626180648803711
+DILUPBiCG:  Solving for p, Initial residual = 0.05013099715849883, Final residual = 1.791994431634939e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.591911997286131e-16, global = 4.587188204938911e-16, cumulative = 1.132533761254907e-15
+DILUPBiCG:  Solving for p, Initial residual = 2.810956575341304e-09, Final residual = 1.289370399427165e-14, No Iterations 1
+phi_io = 0.001802921295166016
+phi_0_io = 0.002079010009765625
+pEqnloop: 1
+U_io = 0.005467891693115234
+U_0_io = 0.004700899124145508
+p_io = 0.000926971435546875
+p_0_io = 0.002704143524169922
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.712179745572749e-16, global = 3.707870386774036e-16, cumulative = 1.503320799932311e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.1124959448082441, Final residual = 6.744415088426545e-19, No Iterations 2
+k_io = 0.001044034957885742
+k_0_io = 0.001043081283569336
+alphat_io = 0.0008101463317871094
+nut_io = 0.0009889602661132812
+ExecutionTime = 26.03 s  ClockTime = 1318 s
+
+END ITERATION TIME = 1605715945.063063
+rho_io = 0.0009868144989013672
+rho_0_io = 0.01208090782165527
+BEGIN ITERATION TIME = 1605715945.109858
+Courant Number mean: 9.175691189961893e-10 max: 0.0002310243204400707
+deltaT = 2.662333328088522e-08
+Time = 1.5374e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1685727122353742, Final residual = 7.415729634618569e-19, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1685727122268547, Final residual = 8.318418402773335e-19, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.04968062508160352, Final residual = 3.861311772021203e-19, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.04962520083371538, Final residual = 1.230901455278796e-18, No Iterations 2
+T_io = 0.002760887145996094
+DILUPBiCG:  Solving for p, Initial residual = 0.04966589960871118, Final residual = 2.563689714814043e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.721797502372727e-16, global = 3.080079971024062e-16, cumulative = 1.811328797034717e-15
+DILUPBiCG:  Solving for p, Initial residual = 3.284654797012645e-09, Final residual = 1.806279654055895e-14, No Iterations 1
+phi_io = 0.002737998962402344
+phi_0_io = 0.001826047897338867
+pEqnloop: 1
+U_io = 0.005295038223266602
+U_0_io = 0.006758928298950195
+p_io = 0.0009708404541015625
+p_0_io = 0.001725912094116211
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.53150120109993e-16, global = 1.062609960168558e-16, cumulative = 1.917589793051573e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.1104142140073453, Final residual = 1.354950319356951e-18, No Iterations 2
+k_io = 0.001101016998291016
+k_0_io = 0.001340150833129883
+alphat_io = 0.0009400844573974609
+nut_io = 0.0008559226989746094
+ExecutionTime = 27.58 s  ClockTime = 1398 s
+
+END ITERATION TIME = 1605716025.823741
+rho_io = 0.001031875610351562
+rho_0_io = 0.003959178924560547
+BEGIN ITERATION TIME = 1605716025.840955
+Courant Number mean: 1.101164464446943e-09 max: 0.0002771629928158597
+deltaT = 3.194799993706226e-08
+Time = 1.85688e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1674767346718545, Final residual = 1.526093034829822e-18, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.167476734663791, Final residual = 1.669443909065249e-18, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.04929665421044205, Final residual = 7.211933095147701e-19, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.04923026671067269, Final residual = 2.391351434393923e-18, No Iterations 2
+T_io = 0.005264043807983398
+DILUPBiCG:  Solving for p, Initial residual = 0.04927910102270117, Final residual = 3.675235685393041e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 6.853768848553518e-16, global = 5.16689867147934e-17, cumulative = 1.969258779766367e-15
+DILUPBiCG:  Solving for p, Initial residual = 4.470344294628745e-09, Final residual = 2.953407352487421e-14, No Iterations 1
+phi_io = 0.00309300422668457
+phi_0_io = 0.001800060272216797
+pEqnloop: 1
+U_io = 0.006227016448974609
+U_0_io = 0.005423069000244141
+p_io = 0.0009310245513916016
+p_0_io = 0.001811981201171875
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.966793352799922e-16, global = -3.896135246015755e-16, cumulative = 1.579645255164791e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.1086746108241058, Final residual = 2.791022572949135e-18, No Iterations 2
+k_io = 0.001034975051879883
+k_0_io = 0.001118183135986328
+alphat_io = 0.001035928726196289
+nut_io = 0.0008769035339355469
+ExecutionTime = 28.92 s  ClockTime = 1471 s
+
+END ITERATION TIME = 1605716098.635449
+rho_io = 0.001096010208129883
+rho_0_io = 0.004976987838745117
+BEGIN ITERATION TIME = 1605716098.675644
+Courant Number mean: 1.321520874908969e-09 max: 0.0003325012164610563
+deltaT = 3.833759992447472e-08
+Time = 2.24026e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1665617424398966, Final residual = 3.191658163753139e-18, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1665617424323304, Final residual = 3.423195977708709e-18, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.04897544614709675, Final residual = 1.348352359884277e-18, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.0488959404444344, Final residual = 4.756791229266922e-18, No Iterations 2
+T_io = 0.001388072967529297
+DILUPBiCG:  Solving for p, Initial residual = 0.04895454422055494, Final residual = 5.278547684750993e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 7.810029694843276e-16, global = 7.023417011026723e-16, cumulative = 2.281986956267464e-15
+DILUPBiCG:  Solving for p, Initial residual = 5.580821237885565e-09, Final residual = 4.447441790281842e-14, No Iterations 1
+phi_io = 0.00263214111328125
+phi_0_io = 0.001749992370605469
+pEqnloop: 1
+U_io = 0.006268024444580078
+U_0_io = 0.006267070770263672
+p_io = 0.001600980758666992
+p_0_io = 0.001067161560058594
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.102203359679508e-16, global = 2.499882834971539e-17, cumulative = 2.306985784617179e-15
+DILUPBiCG:  Solving for k, Initial residual = 0.1072140410271765, Final residual = 5.88306828171818e-18, No Iterations 2
+k_io = 0.001108884811401367
+k_0_io = 0.001253843307495117
+alphat_io = 0.0009889602661132812
+nut_io = 0.000759124755859375
+ExecutionTime = 30.53 s  ClockTime = 1551 s
+
+END ITERATION TIME = 1605716178.523882
+rho_io = 0.001942873001098633
+rho_0_io = 0.01632308959960938
+BEGIN ITERATION TIME = 1605716178.61975
+Courant Number mean: 1.586013437855114e-09 max: 0.0003988671771477065
+deltaT = 4.600511990936966e-08
+Time = 2.70031e-07
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1657924609810475, Final residual = 6.804124583568712e-18, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1657924609746321, Final residual = 7.186516211421373e-18, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.04870415760728183, Final residual = 2.50236320306971e-18, No Iterations 2
+DILUPBiCG:  Solving for e, Initial residual = 0.04860896493784623, Final residual = 9.676840574666388e-18, No Iterations 2
+T_io = 0.009464025497436523
+DILUPBiCG:  Solving for p, Initial residual = 0.04867930439955726, Final residual = 7.594548713686411e-09, No Iterations 1
+pEqnloop: 0
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.331861047346806e-15, global = 8.610294743274039e-16, cumulative = 3.168015258944583e-15
