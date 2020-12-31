@@ -10,8 +10,9 @@
 #include <atomic>
 #include <vector>
 
-std::mutex mtx1,mtx2;
+#include <mpi.h>
 
+std::mutex mtx1,mtx2;
 
 struct field_handler
 {
@@ -26,7 +27,6 @@ struct field_handler
 
 void writeFromQueue(int rank, std::atomic<bool>& running,std::queue<field_handler*>& queue,std::condition_variable& cv_worker, objectRegistry& mesh)
 {
-
     while(running)
     {
         if(!queue.empty())

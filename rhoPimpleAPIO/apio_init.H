@@ -4,15 +4,13 @@ std::queue<field_handler*> queue;
 std::condition_variable cv_worker;
 std::atomic<bool> running {true};
 
-int rank = Pstream::myProcNo();
-int nprocs = Pstream::nProcs();
-
 std::thread writer (writeFromQueue,rank,std::ref(running),std::ref(queue),std::ref(cv_worker),std::ref(mesh));
 
 int pEqnloop=0;
 
 cpu_set_t cpuset;
 CPU_ZERO(&cpuset);
-CPU_SET(nprocs + rank, &cpuset);
+CPU_SET(rank%128 +128, &cpuset);
 pthread_setaffinity_np(writer.native_handle(),sizeof(cpu_set_t), &cpuset);
+
 

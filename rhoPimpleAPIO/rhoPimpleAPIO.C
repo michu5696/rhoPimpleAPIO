@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
     Info<< "\nStarting time loop\n" << endl;
     
     while (runTime.run())
-    {
+    {  
         #include "readDyMControls.H"
 
         // Store divrhoU from the previous mesh so that it can be mapped
@@ -125,7 +125,6 @@ int main(int argc, char *argv[])
         ++runTime;
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
-
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
@@ -213,8 +212,6 @@ int main(int argc, char *argv[])
         {
 		Iwrite({&f_rho,&f_rho_0},cv_worker,queue);
         }
-	//runTime.write();
-
         runTime.printExecutionTime(Info);
     }
     
@@ -222,7 +219,8 @@ int main(int argc, char *argv[])
 
     #include "apio_terminate.H"
     Info<< "End\n" << endl;
-  
+ 
+
     return 0;
 }
 

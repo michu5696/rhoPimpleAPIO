@@ -106,7 +106,6 @@ Info << "pEqnloop: "<< pEqnloop << endl;
 //-----------------------------------------------
 if (runTime.outputTime() && pEqnloop==1)
         {
-          Info << "WRITING U FIELD" << endl;
           Iwrite({&f_U,&f_U_0},cv_worker,queue);
         }
 //-----------------------------------------------
